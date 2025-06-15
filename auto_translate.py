@@ -6,25 +6,44 @@ import keyboard
 print("Spusťte Virtaal + QTranslate a přepněte do Virtaal (12 sekund)...")
 time.sleep(12)
 
+num_cycles = 1
+pause = False
+
+
+for i in range(num_cycles):
+    time.sleep(1)
+    pyautogui.hotkey('win', 'down')
+    time.sleep(1)
+
+num_cycles = 1
+pause = False
+
+
+for i in range(num_cycles):
+    time.sleep(1)
+    pyautogui.hotkey('win', 'down')
+    time.sleep(1)
+
+
 num_cycles = 5000
 pause = False
 
 print("\n--- Ovládání ---")
-print("P = pauza / pokračuj")
-print("Q = ukonči\n")
+print("alt = pauza \pokračuj")
+print("home = ukonči\n")
 
 for i in range(num_cycles):
-    if keyboard.is_pressed("q"):
+    if keyboard.is_pressed("home"):
         print("Ukončeno uživatelem.")
         break
 
-    if keyboard.is_pressed("p"):
-        pause = not pause
+    if keyboard.is_pressed("alt"):
+        pause =  pause
         print("== Pauza ==" if pause else "== Pokračuji ==")
         time.sleep(1)
 
     if pause:
-        time.sleep(0.5)
+        time.sleep(10)
         continue
 
     print(f"⟳ Krok {i + 1}/{num_cycles}")
@@ -34,16 +53,18 @@ for i in range(num_cycles):
     time.sleep(1)
 
     # QTRANSLATE
-    pyautogui.hotkey("ctrl")             # spustí překlad
-    time.sleep(1)
-    pyautogui.press("shift")             # přepíše italštinu češtinou
-    time.sleep(3)
+    pyautogui.hotkey("ctrl","a")             # označí
+    time.sleep(2)
+    pyautogui.press("ctrl")            # spustí překlad
+    pyautogui.press("ctrl")  
+    time.sleep(4) 
 
     # Minimalizace QTranslate
-    pyautogui.hotkey("alt", "space")
-    time.sleep(0.2)
-    pyautogui.press("n")                 # 'N' = minimalizovat
+    pyautogui.hotkey("alt", "space","n")     # 'N' = minimalizovat
     time.sleep(1)
+        
+    pyautogui.press("shift")             # přepíše italštinu češtinou
+    time.sleep(3) 
 
     # Potvrzení ve Virtaalu (např. Enter pro další segment)
     pyautogui.press("enter")
