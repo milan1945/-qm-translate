@@ -15,15 +15,6 @@ for i in range(num_cycles):
     pyautogui.hotkey('win', 'down')
     time.sleep(1)
 
-num_cycles = 1
-pause = False
-
-
-for i in range(num_cycles):
-    time.sleep(1)
-    pyautogui.hotkey('win', 'down')
-    time.sleep(1)
-
 
 num_cycles = 5000
 pause = False
